@@ -1,0 +1,61 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>
+</head>
+<body>
+<div class="calculatrice">   
+
+    <h1> Ousmo Calculator</h1>
+            <input type="text" id="resultat" disabled>
+ <input type="text" id="resultat2" disabled>
+
+  <div class="contneur">
+
+
+   <div>
+  <button onclick="del()" class="clear">D</button>
+    <button onclick="reset()" class="clear">C</button>
+    <button onclick="ajoutp()" class="numerique">(</button>
+    <button onclick="ajoutp2()" class="numerique">)</button>
+    </div>
+
+    <div>
+    <button onclick="ajout7()" class="numerique">7</button>
+    <button onclick="ajout8()" class="numerique">8</button>
+    <button onclick="ajout9()" class="numerique">9</button>
+    <button onclick="ajoutDivise()" class="opperateur">÷</button>
+
+    </div>
+    
+   <div>
+    <button onclick="ajout4()" class="numerique">4</button>
+    <button onclick="ajout5()" class="numerique">5</button>
+    <button onclick="ajout6()" class="numerique">6</button>
+     <button onclick="ajoutFois()" class="opperateur">×</button>
+    
+    </div>
+
+
+      <div>
+   <button onclick="ajout1()" class="numerique">1</button>
+   <button onclick="ajout2()" class="numerique">2</button>
+   <button onclick="ajout3()" class="numerique">3</button>
+   <button onclick="ajoutMoins()" class="opperateur">-</button>
+   </div>
+
+   <div>
+   <button onclick="ajout0()" class="numerique">0</button>
+      <button onclick="ajoutv()" class="numerique">.</button>
+    <button onclick="egal()" class ="calcul">=</button>
+     <button onclick="ajoutPlus()" class="opperateur">+</button>
+</div>
+  </div>
+
+</div> 
+
+</body>
+</html>
