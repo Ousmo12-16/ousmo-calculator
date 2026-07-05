@@ -1,3 +1,4 @@
+let historique = []
 function ajout(valeur) {
     const input = document.getElementById("resultat");
     const valeurAffichee = valeur;
@@ -29,7 +30,6 @@ function ajout(valeur) {
 
     input.value += valeurAffichee;
 }
-
 function egal() {
     const input = document.getElementById("resultat");
     const output = document.getElementById("resultat2");
@@ -46,6 +46,11 @@ function egal() {
     } catch (error) {
         output.value = "Erreur";
     }
+    let calcul={
+    expression: document.getElementById("resultat").value ,
+    resultatt:document.getElementById("resultat2").value
+}
+ historique.push(calcul);
 }
 
 function del() {
@@ -57,3 +62,6 @@ function reset() {
     document.getElementById("resultat").value = "";
     document.getElementById("resultat2").value = "";
 }
+
+
+

@@ -9,7 +9,7 @@
 <body>
 <div class="calculatrice">   
 
-    <h1> Ousmo Calculator</h1>
+    <h1> Calculator</h1>
             <input type="text" id="resultat" disabled>
  <input type="text" id="resultat2" disabled>
 
@@ -19,8 +19,8 @@
    <div>
   <button onclick="del()" class="clear">D</button>
     <button onclick="reset()" class="clear">C</button>
-    <button onclick="ajout()" class="numerique">(</button>
-    <button onclick="ajout()" class="numerique">)</button>
+    <button onclick="ajout('(')" class="numerique">(</button>
+    <button onclick="ajout(')')" class="numerique">)</button>
     </div>
 
     <div>
@@ -52,7 +52,7 @@
       <button onclick="ajout('.')" class="numerique">.</button>
     <button onclick="egal()" class ="calcul">=</button>
      <button onclick="ajout('+')" class="opperateur">+</button>
-</div>
+    </div>
   </div>
 
 </div> 
