@@ -1,5 +1,4 @@
-# ousmo-calculator
-My first calculator project built with HTML, CSS and JavaScript.
+# Ousmo Calculator
 
 A simple calculator made with HTML, CSS and JavaScript.
 
