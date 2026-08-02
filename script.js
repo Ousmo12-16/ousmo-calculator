@@ -1,4 +1,38 @@
-let historique = []
+const historiqueKey = "historiqueCalculatrice";
+let historique = JSON.parse(localStorage.getItem(historiqueKey) || "[]");
+
+function sauvegarderHistorique() {
+    localStorage.setItem(historiqueKey, JSON.stringify(historique));
+}
+
+function formaterDate(dateString) {
+    const date = new Date(dateString);
+
+    if (Number.isNaN(date.getTime())) {
+        return "Date inconnue";
+    }
+
+    return date.toLocaleDateString("fr-FR", {
+        day: "2-digit",
+        month: "2-digit",
+        year: "numeric"
+    });
+}
+
+function formaterHeure(dateString) {
+    const date = new Date(dateString);
+
+    if (Number.isNaN(date.getTime())) {
+        return "Heure inconnue";
+    }
+
+    return date.toLocaleTimeString("fr-FR", {
+        hour: "2-digit",
+        minute: "2-digit",
+        second: "2-digit"
+    });
+}
+
 function ajout(valeur) {
     const input = document.getElementById("resultat");
     const valeurAffichee = valeur;
@@ -49,15 +83,16 @@ function egal() {
         output.value = "Erreur";
     }
 
+    if (output.value !== "Erreur") {
+        const calcul = {
+            expression: input.value,
+            resultatt: output.value,
+            dateHeure: new Date().toISOString()
+        };
 
-    let calcul={
-    expression: document.getElementById("resultat").value ,
-    resultatt:document.getElementById("resultat2").value
-}
-
- historique.push(calcul);
- console.log(historique);
-
+        historique.unshift(calcul);
+        sauvegarderHistorique();
+    }
 }
 
 
@@ -80,13 +115,43 @@ function afficherHistorique() {
     historiquePanel.style.display = "flex";
     contenuHistorique.innerHTML = "";
 
-    for (let i = 0; i < historique.length; i++) {
-        const item = historique[i];
-        const ligne = document.createElement("div");
-        ligne.className = "ligne-historique";
-        ligne.textContent = `${item.expression} = ${item.resultatt}`;
-        contenuHistorique.appendChild(ligne);
-    }
+    const groupesParDate = historique.reduce((acc, item) => {
+        const date = formaterDate(item.dateHeure);
+        if (!acc[date]) {
+            acc[date] = [];
+        }
+        acc[date].push(item);
+        return acc;
+    }, {});
+
+    Object.entries(groupesParDate).forEach(([date, items]) => {
+        const sectionDate = document.createElement("section");
+        sectionDate.className = "section-date";
+
+        const titreDate = document.createElement("h3");
+        titreDate.className = "titre-date";
+        titreDate.textContent = date;
+        sectionDate.appendChild(titreDate);
+
+        items.forEach((item) => {
+            const ligne = document.createElement("div");
+            ligne.className = "ligne-historique";
+
+            const calcul = document.createElement("span");
+            calcul.className = "calcul-historique";
+            calcul.textContent = `${item.expression} = ${item.resultatt}`;
+
+            const heure = document.createElement("span");
+            heure.className = "heure-historique";
+            heure.textContent = formaterHeure(item.dateHeure);
+
+            ligne.appendChild(calcul);
+            ligne.appendChild(heure);
+            sectionDate.appendChild(ligne);
+        });
+
+        contenuHistorique.appendChild(sectionDate);
+    });
 }
 
 function fermerHistorique() {

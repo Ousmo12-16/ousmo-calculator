@@ -170,17 +170,52 @@ button{
   #contenu-historique {
     display: flex;
     flex-direction: column;
-    gap: 10px;
+    gap: 14px;
     overflow-y: auto;
     padding-right: 4px;
   }
 
+  .section-date {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: 14px;
+    padding: 12px;
+  }
+
+  .titre-date {
+    margin: 0;
+    color: #d7ffe3;
+    font-size: 1rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+  }
+
   .ligne-historique {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 12px;
     background: rgba(0, 0, 0, 0.16);
     color: #ffffff;
     padding: 12px 14px;
     border-radius: 12px;
     border: 1px solid rgba(28, 28, 28, 0.4);
     font-size: 1.05rem;
+    font-weight: 700;
+  }
+
+  .calcul-historique {
+    flex: 1;
+    overflow-wrap: anywhere;
+  }
+
+  .heure-historique {
+    color: #9dc7ff;
+    font-size: 0.95rem;
+    white-space: nowrap;
     font-weight: 700;
   }
